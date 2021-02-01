@@ -1,25 +1,25 @@
-version: '3.8'
+version: '3.7'
 
 services:
   proxy:
     container_name: proxy
-    image: traefik:alpine
+    image: traefik:2.4
     restart: always
-    labels:
-      - "traefik.frontend.rule=Host:monitor.traefik"
-      - "traefik.port=8080"
-      - "traefik.enabled=true"
-      - "traefik.backend.healthcheck.enable=false"
-      - "traefik.docker.network=proxy"
+    # labels:
+    #   - "traefik.frontend.rule=Host:monitor.traefik"
+    #   - "traefik.port=8080"
+    #   - "traefik.enabled=true"
+    #   - "traefik.backend.healthcheck.enable=false"
+    #   - "traefik.docker.network=proxy"
     ports:
       - 80:80
       - 8080:8080
       - 443:443
     volumes:
-      - ./traefik.toml:/etc/traefik/traefik.toml
+      - ./traefik.yml:/etc/traefik/traefik.yml
       - /var/run/docker.sock:/var/run/docker.sock
 
-networks:
-  default:
-    external: true
-    name: proxy
+# networks:
+#   default:
+#     external: true
+#     name: proxy
