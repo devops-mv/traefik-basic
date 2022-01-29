@@ -19,7 +19,7 @@ services:
       - ./traefik.yml:/etc/traefik/traefik.yml
       - /var/run/docker.sock:/var/run/docker.sock
 
-# networks:
-#   default:
-#     external: true
-#     name: proxy
+networks:
+  default:
+    external: true
+    name: proxy
